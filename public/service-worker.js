@@ -1,4 +1,4 @@
-console.log('service worker working')
+
 
 const CACHE_NAME = "budget-static-cash-v1"
 
@@ -11,7 +11,7 @@ const FILES_TO_CACHE = [
     '/icons/icon-512x512.png',
     '/index.js',
     '/manifest.webmanifest',
-    
+
   
 ];
 
@@ -19,7 +19,9 @@ const FILES_TO_CACHE = [
 self.addEventListener("install", function (evt) {
   // pre cache image data
   evt.waitUntil(
-    caches.open(DATA_CACHE_NAME).then((cache) => cache.add("/api/images"))
+    caches.open(DATA_CACHE_NAME).then(cache => {
+      cache.add('/api/transaction')
+    })
   );
     
   // pre cache all static assets
@@ -31,3 +33,7 @@ self.addEventListener("install", function (evt) {
   // has finished installing
   self.skipWaiting();
 });
+
+// evt.respondWith(
+//   caches.match(evt.requ)
+// )
