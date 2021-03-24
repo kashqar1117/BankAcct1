@@ -1,3 +1,4 @@
+const { response } = require("express");
 
 
 const CACHE_NAME = "budget-static-cash-v1"
@@ -34,6 +35,29 @@ self.addEventListener("install", function (evt) {
   self.skipWaiting();
 });
 
-// evt.respondWith(
-//   caches.match(evt.requ)
-// )
+self.addEventListener('activate' ,evt =>{
+  evt.waitUntil(
+    caches.keys().then(keylist =>{
+      Promise.all(
+        keylist.map(key =>{
+          if (key !==  CACHE_NAME&& key !== DATA_CACHE_NAME){
+            console.log('remove old cache data'. key)
+            return caches.delete(key)
+          }
+        })
+      )
+    })
+  )
+  self.clients.claim()
+})
+
+self.addEventListener('fetch', evt => {
+  console.log('hitb fetch')
+  evt.respondWith(
+    caches.open(CACHE_NAME).then(cache =>{
+      return cache.match(evt.request).then(response =>{
+        return response || fetch(evt.request)
+      })
+    })
+  )
+})
