@@ -1,20 +1,20 @@
 {
     "name":"banking App",
     "short_name": "BankApp",
-    "start_url":"/index.html",
+    "start_url":"/",
     "display":"standalone",
     "background_color":"#FFE9D2",
     "theme_color":"#FFE9D2",
     "orentation": "potrait-primary",
     "icons":[
         {
-            "src":"./public/icons/icon-192x192.png",
-            "type":"/image/png",
-            "sizes":"72x72"
+            "src":"./icons/icon-192x192.png",
+            "type":"image/png",
+            "sizes":"192x192"
         },
         {
-            "src":"./public/icons/icon-512x512.png",
-            "type":"/image/png",
+            "src":"./icons/icon-512x512.png",
+            "type":"image/png",
             "sizes":"512x512"
         }
         

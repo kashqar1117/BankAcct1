@@ -45,11 +45,14 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="index.js"></script>
   <script>
-    if('serviceworker' in navigator){
-      window.addEventListener('load', ()=>{
-        navigator.serviceWorker.register('service-worker.js').then(reg => {
+    if('serviceWorker' in navigator){
+      console.log('service worker one')
+      window.addEventListener('load', function(){
+        navigator.serviceWorker.register('./service-worker.js').then(reg => {
           console.log('we found the service worker file')
-        })
+        }, function(err){
+          console.log(err)
+        } )
       })
     }
   </script>
