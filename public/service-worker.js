@@ -1,5 +1,3 @@
-const { response } = require("express");
-
 
 const CACHE_NAME = "budget-static-cash-v1"
 
@@ -51,6 +49,9 @@ self.addEventListener('activate' ,evt =>{
   self.clients.claim()
 })
 
+
+
+//this code here
 self.addEventListener('fetch', evt => {
   console.log('hitb fetch')
   evt.respondWith(
